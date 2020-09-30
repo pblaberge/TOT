@@ -1,0 +1,6 @@
+[submodule "third_party/com_github/nlohmann/json/trunk"]
+	path = third_party/com_github/nlohmann/json/trunk
+	url = https://github.com/nlohmann/json.git
+[submodule "third_party/com_github/abseil/abseil-cpp"]
+	path = third_party/com_github/abseil/abseil-cpp
+	url = https://github.com/abseil/abseil-cpp.git
