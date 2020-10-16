@@ -1,0 +1,98 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name = "test_app",
+    srcs = ["test_app.cc"],
+    deps = [ ":os", ],
+)
+
+cc_library(
+    name = "error",
+    hdrs = [
+        "error.hpp",
+    ],
+    srcs = [
+        "src/error/error.cpp",
+    ],
+)
+
+cc_library(
+    name = "atomic",
+    hdrs = [
+        "atomic.hpp",
+    ],
+    srcs = [
+        "src/atomic/atomic.cpp",
+    ],
+)
+
+cc_library(
+    name = "sync",
+    hdrs = [
+        "sync.hpp",
+    ],
+    srcs = [
+        "src/sync/mutex.cpp",
+        "src/sync/once.cpp",
+    ],
+    deps = [
+        ":atomic",
+    ]
+)
+
+cc_library(
+    name = "os",
+    hdrs = [
+        "os.hpp",
+    ],
+    srcs = [
+        "src/os/constants.cpp",
+        "src/os/errors.cpp",
+        "src/os/stat.cpp",
+        "src/os/utils.hpp",
+        "src/os/utils.cpp",
+        "src/os/unix_utils.cpp",
+        "src/os/file.cpp",
+    ],
+    deps = [
+        ":syscall",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/types:span",
+        "@com_google_absl//absl/time",
+    ],
+)
+
+cc_library(
+    name = "io",
+    hdrs = [
+        "io.hpp",
+    ],
+    srcs = [
+        "src/io/io.cpp",
+    ],
+    deps = [
+        "@com_google_absl//absl/types:span",
+        ":error",
+    ],
+)
+
+cc_library(
+    name = "syscall",
+    hdrs = [
+        "syscall.hpp",
+    ],
+    srcs = [
+        "src/syscall/constants.cpp",
+        "src/syscall/errno.cpp",
+        "src/syscall/pipe2.cpp",
+        "src/syscall/open.cpp",
+        "src/syscall/errno_internal.hpp",
+        "src/syscall/errno_internal.cpp",
+        "src/syscall/timespec.cpp",
+        "src/syscall/stat.cpp",
+    ],
+    deps = [
+        ":error",
+        "@com_google_absl//absl/types:span",
+    ],
+)

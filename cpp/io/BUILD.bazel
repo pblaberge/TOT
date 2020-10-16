@@ -1,0 +1,11 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+	name = "io",
+	hdrs = [
+		"io.h",
+	],
+	deps = [
+		"//cpp/base:error",
+	],
+)

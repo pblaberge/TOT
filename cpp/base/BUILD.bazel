@@ -1,0 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+	name = "unique_fd",
+	hdrs = [
+		"unique_fd.h",
+	],
+	srcs = [
+		"unique_fd.cc",
+	],
+)
+
+cc_library(
+	name = "error",
+	hdrs = ["error.h",],
+	srcs = ["error.cc",],
+)

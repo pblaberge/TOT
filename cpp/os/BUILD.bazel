@@ -1,0 +1,15 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+	name = "file",
+	srcs = [
+	 "unix_file.cc",
+	 ],
+	hdrs = [
+	"file.h",
+	],
+	deps = [
+		"//cpp/io",
+		"@com_google_absl//absl/types:span",
+	],
+)

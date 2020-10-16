@@ -3,5 +3,5 @@ cc_library(
 	hdrs = [
 		"trunk/single_include/nlohmann/json.hpp",
 	],
-	visibility = "//visibility:public",
+	visibility = ["//visibility:public"],
 )
